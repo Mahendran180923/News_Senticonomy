@@ -2,7 +2,7 @@ kaggle
 zipfile
 numpy
 datetime
-dateutil.relativedelta
+dateutil
 pytz
 boto3
 json
@@ -14,4 +14,4 @@ sklearn
 seaborn
 wordcloud
 streamlit
-plotly.express
+plotly
