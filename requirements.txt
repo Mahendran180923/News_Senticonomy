@@ -3,3 +3,4 @@ datetime
 seaborn
 streamlit
 plotly
+WordCloud
