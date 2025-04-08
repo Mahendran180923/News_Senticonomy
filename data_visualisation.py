@@ -6,19 +6,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 
-st.set_page_config(
-    page_title="Your App Title",
-    page_icon=":smiley:",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    theme={
-        "primaryColor": "#8e4343",
-        "backgroundColor": "#44494a",
-        "secondaryBackgroundColor": "#e8eaec",
-        "textColor": "#fef3ff"
-    }
-)
 
+
+
+st.config.set_option('theme.base', 'light')
+st.config.set_option('theme.primaryColor', '#907474')
+st.config.set_option('theme.backgroundColor', '#C1A3A3')
+st.config.set_option('theme.secondaryBackgroundColor', '#B93413')
+st.config.set_option('theme.textColor', '#020412')
+st.set_page_config(layout='wide')
 
 # # Create a copy of the DataFrame
 df = pd.read_csv("final_data.csv")
@@ -76,16 +72,55 @@ elif selected_option == "Bar and Line Chart":
         avg_compound = df.groupby(['year', 'month', 'category'])['compound'].mean().reset_index()
         years = sorted(df['year'].unique())
         months = sorted(df['month'].unique())
-        fig = go.Figure(data=[go.Bar(x=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['category'], y=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['compound'], name='Bar Chart'), go.Scatter(x=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['category'], y=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['compound'], mode='lines', name='Line Chart')])
+        
+        # Create a dictionary to map month numbers to month names
+        month_names = {
+            1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
+            7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'
+        }
+        
+        fig = go.Figure(data=[go.Bar(x=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['category'], y=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['compound'], name='Bar Chart'), 
+                             go.Scatter(x=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['category'], y=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['compound'], mode='lines', name='Line Chart')])
+        
         year_buttons = []
         for y in years:
             filtered_data = avg_compound[(avg_compound['year'] == y) & (avg_compound['month'] == months[0])]
             year_buttons.append(dict(label=str(y), method='update', args=[{ "x": [filtered_data['category'], filtered_data['category']], "y": [filtered_data['compound'], filtered_data['compound']] }]))
+        
         month_buttons = []
         for m in months:
             filtered_data = avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == m)]
-            month_buttons.append(dict(label=str(m), method='update', args=[{ "x": [filtered_data['category'], filtered_data['category']], "y": [filtered_data['compound'], filtered_data['compound']] }]))
-        fig.update_layout(updatemenus=[dict(type='dropdown', buttons=year_buttons, direction='down', showactive=True, x=0.1, xanchor='left', y=1.15, yanchor='top'), dict(type='dropdown', buttons=month_buttons, direction='down', showactive=True, x=0.4, xanchor='left', y=1.15, yanchor='top')])
+            month_buttons.append(dict(label=month_names[m], method='update', args=[{ "x": [filtered_data['category'], filtered_data['category']], "y": [filtered_data['compound'], filtered_data['compound']] }]))
+        
+        fig.update_layout(
+            updatemenus=[
+                dict(
+                    type='dropdown',
+                    buttons=year_buttons,
+                    direction='down',
+                    showactive=True,
+                    x=0.1,
+                    xanchor='left',
+                    y=1.15,
+                    yanchor='top',
+                    pad={"r": 10, "t": 10},
+                    name="Year"
+                ),
+                dict(
+                    type='dropdown',
+                    buttons=month_buttons,
+                    direction='down',
+                    showactive=True,
+                    x=0.4,
+                    xanchor='left',
+                    y=1.15,
+                    yanchor='top',
+                    pad={"r": 10, "t": 10},
+                    name="Month"
+                )
+            ]
+        )
         return fig
+    
     st.write("Bar and Line Chart")
     st.plotly_chart(create_bar_and_line_chart())
