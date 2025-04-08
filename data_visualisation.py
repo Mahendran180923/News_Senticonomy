@@ -6,6 +6,20 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 
+st.set_page_config(
+    page_title="Your App Title",
+    page_icon=":smiley:",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    theme={
+        "primaryColor": "#8e4343",
+        "backgroundColor": "#44494a",
+        "secondaryBackgroundColor": "#e8eaec",
+        "textColor": "#fef3ff"
+    }
+)
+
+
 # # Create a copy of the DataFrame
 df = pd.read_csv("final_data.csv")
 
