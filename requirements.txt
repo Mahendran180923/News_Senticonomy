@@ -1,0 +1,17 @@
+kaggle
+zipfile
+numpy
+datetime
+dateutil.relativedelta
+pytz
+boto3
+json
+ast
+textblob
+nltk
+wordcloud
+sklearn
+seaborn
+wordcloud
+streamlit
+plotly.express
