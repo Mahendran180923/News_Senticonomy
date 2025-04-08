@@ -17,21 +17,21 @@ selected_option = st.radio(
 )
 
 # Function to create word cloud
-def create_word_cloud(cluster):
-    cluster_text = " ".join(df[df['cluster'] == cluster]['headline'].astype(str).fillna(''))
-    wordcloud = WordCloud(background_color='white').generate(cluster_text)
-    return wordcloud
+# def create_word_cloud(cluster):
+#     cluster_text = " ".join(df[df['cluster'] == cluster]['headline'].astype(str).fillna(''))
+#     wordcloud = WordCloud(background_color='white').generate(cluster_text)
+#     return wordcloud
 
-if selected_option == "Word Cloud":
-    clusters = df['cluster'].unique()
-    for i, cluster in enumerate(clusters):
-        st.write(f"Word Cloud for Cluster {cluster}")
-        fig, ax = plt.subplots()
-        ax.imshow(create_word_cloud(cluster), interpolation='bilinear')
-        ax.axis('off')
-        st.pyplot(fig)
+# if selected_option == "Word Cloud":
+#     clusters = df['cluster'].unique()
+#     for i, cluster in enumerate(clusters):
+#         st.write(f"Word Cloud for Cluster {cluster}")
+#         fig, ax = plt.subplots()
+#         ax.imshow(create_word_cloud(cluster), interpolation='bilinear')
+#         ax.axis('off')
+#         st.pyplot(fig)
 
-elif selected_option == "Sentiment Trend Plot":
+if selected_option == "Sentiment Trend Plot":
     # Function to create sentiment trend plot
     def create_sentiment_trend_plot():
         sentiment_trend = df.groupby(['year', 'category'])['compound'].mean().reset_index()
