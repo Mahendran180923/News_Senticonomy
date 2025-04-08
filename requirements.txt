@@ -1,14 +1,5 @@
-kaggle
 numpy
 datetime
-pytz
-boto3
-ast
-textblob
-nltk
-wordcloud
-sklearn
 seaborn
-wordcloud
 streamlit
 plotly
