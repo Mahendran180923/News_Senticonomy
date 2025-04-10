@@ -55,3 +55,10 @@ Senticonomy is a web-based application that collects and analyzes historical and
 - Sentiment score assignment using NLP models  
 
 
+<p align="center">
+  <a href="https://newssenticonomy-shashintech.streamlit.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Launch%20App-Streamlit-orange?style=for-the-badge&logo=streamlit" alt="Launch Streamlit App">
+  </a>
+</p>
+
+
