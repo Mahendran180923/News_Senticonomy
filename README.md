@@ -54,4 +54,3 @@ Senticonomy is a web-based application that collects and analyzes historical and
 - Text normalization  
 - Sentiment score assignment using NLP models  
 
----
