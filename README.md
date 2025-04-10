@@ -54,6 +54,12 @@ Senticonomy is a web-based application that collects and analyzes historical and
 - Text normalization  
 - Sentiment score assignment using NLP models  
 
+## 🌐 Live Demo
+
+You can check out the live version of the Senticonomy app here:  
+👉 [https://newssenticonomy-shashintech.streamlit.app/](https://newssenticonomy-shashintech.streamlit.app/)
+
+No installation needed — just open the link in your browser.
 
 <p align="center">
   <a href="https://newssenticonomy-shashintech.streamlit.app/" target="_blank">
