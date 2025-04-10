@@ -60,10 +60,6 @@ Senticonomy is a web-based application that collects and analyzes historical and
 - Deploy a live hosted version (e.g., on EC2 or Streamlit Cloud)
 - Add time-series forecasting on sentiment trends
 
-```markdown
-     [![Senticonomy App Screenshot](screenshot.png)](https://newssenticonomy-shashintech.streamlit.app/)
-     ```
-
 
 ## 🌐 Live Demo
 
@@ -77,5 +73,10 @@ No installation needed — just open the link in your browser.
     <img src="https://img.shields.io/badge/Launch%20App-Streamlit-orange?style=for-the-badge&logo=streamlit" alt="Launch Streamlit App">
   </a>
 </p>
+
+
+```markdown
+     [![Senticonomy App Screenshot](screenshot.png)](https://newssenticonomy-shashintech.streamlit.app/)
+     ```
 
 
