@@ -8,11 +8,10 @@ import pandas as pd
 
 
 
-
 st.config.set_option('theme.base', 'light')
 st.config.set_option('theme.primaryColor', '#907474')
-st.config.set_option('theme.backgroundColor', '#C1A3A3')
-st.config.set_option('theme.secondaryBackgroundColor', '#B93413')
+st.config.set_option('theme.backgroundColor', '#F9EBE7')
+st.config.set_option('theme.secondaryBackgroundColor', '#F9F3F1')
 st.config.set_option('theme.textColor', '#020412')
 st.set_page_config(layout='wide')
 
@@ -20,11 +19,20 @@ st.set_page_config(layout='wide')
 df = pd.read_csv("final_data.csv")
 
 
-st.title("News Sentiment Analysis")
-selected_option = st.radio(
-    "Select an option:",
-    ("Word Cloud", "Sentiment Trend Plot", "Sentiment Trend Plot with Dropdown", "Bar and Line Chart")
-)
+# Create a sidebar
+st.sidebar.title("News Sentiment Analysis")
+
+# Add options to the sidebar
+word_cloud = st.sidebar.checkbox("Word Cloud")
+sentiment_trend = st.sidebar.checkbox("Sentiment Trend by Category")
+year_month_trend = st.sidebar.checkbox("Year/Month_wise Trend")
+year_quarter_trend = st.sidebar.checkbox("Year/Quarter_wise Trend")
+bar_line_chart = st.sidebar.checkbox("Bar and Line Chart by Date Range")
+category_month_year_comparison = st.sidebar.checkbox("Category-wise Month and Year Comparison")
+category_sentiment_bar_chart = st.sidebar.checkbox("Category-wise Sentiment Bar Chart")
+sentiment_word_cloud = st.sidebar.checkbox("Sentiment Word Cloud")
+
+
 
 # Function to create word cloud
 def create_word_cloud(cluster):
@@ -32,16 +40,29 @@ def create_word_cloud(cluster):
     wordcloud = WordCloud(background_color='white').generate(cluster_text)
     return wordcloud
 
-if selected_option == "Word Cloud":
-    clusters = df['cluster'].unique()
-    for i, cluster in enumerate(clusters):
-        st.write(f"Word Cloud for Cluster {cluster}")
-        fig, ax = plt.subplots()
-        ax.imshow(create_word_cloud(cluster), interpolation='bilinear')
-        ax.axis('off')
-        st.pyplot(fig)
 
-elif selected_option == "Sentiment Trend Plot":
+if word_cloud:
+    clusters = sorted(df['cluster'].unique())
+    n_clusters = len(clusters)
+    n_cols = 3
+    n_rows = (n_clusters + n_cols - 1) // n_cols  # Calculate the number of rows needed
+    fig, axs = plt.subplots(n_rows, n_cols, figsize=(15, n_rows * 5))
+    for i, cluster in enumerate(clusters):
+        row = i // n_cols
+        col = i % n_cols
+        axs[row, col].imshow(create_word_cloud(cluster), interpolation='bilinear')
+        axs[row, col].axis('off')
+        axs[row, col].set_title(f"Cluster {cluster}")
+    # Hide any unused subplots
+    for i in range(n_clusters, n_rows * n_cols):
+        row = i // n_cols
+        col = i % n_cols
+        axs[row, col].axis('off')
+    plt.tight_layout()
+    st.pyplot(fig)
+
+
+if sentiment_trend:
     # Function to create sentiment trend plot
     def create_sentiment_trend_plot():
         sentiment_trend = df.groupby(['year', 'category'])['compound'].mean().reset_index()
@@ -51,76 +72,184 @@ elif selected_option == "Sentiment Trend Plot":
     st.plotly_chart(create_sentiment_trend_plot())
 
 
-elif selected_option == "Sentiment Trend Plot with Dropdown":
-    # Function to create sentiment trend plot with dropdown
-    def create_sentiment_trend_plot_with_dropdown():
-        sentiment_trend = df.groupby(['year', 'category'])['compound'].mean().reset_index()
-        years = sorted(sentiment_trend['year'].unique())
-        fig = px.line(sentiment_trend[sentiment_trend['year'] == years[0]], x='category', y='compound', color='category', title=f'Sentiment Trend in {years[0]}', markers=True, labels={"compound": "Average Sentiment Score", "category": "News Category"})
-        dropdown_button = [dict(label=str(y), method='update', args=[{ "x": [sentiment_trend[sentiment_trend['year'] == y]['category']], "y": [sentiment_trend[sentiment_trend['year'] == y]['compound']], "type": "scatter" }, {"title": f"Sentiment score by category for {y}"} ]) for y in years]
-        fig.update_layout(updatemenus=[dict(type='dropdown', buttons=dropdown_button, direction='down', showactive=True, x=0.1, xanchor='left', y=1.15, yanchor='top')])
-        return fig
-    st.write("Sentiment Trend Plot with Dropdown")
-    st.plotly_chart(create_sentiment_trend_plot_with_dropdown())
-
-elif selected_option == "Bar and Line Chart":
-    # Function to create bar and line chart
-    def create_bar_and_line_chart():
-        df['date'] = pd.to_datetime(df['pub_date'])
+if year_month_trend:
+    # Function to create line chart
+    def month_wise_trend():
+        df['date'] = pd.to_datetime(df['date'])
         df['year'] = df['date'].dt.year
         df['month'] = df['date'].dt.month
-        avg_compound = df.groupby(['year', 'month', 'category'])['compound'].mean().reset_index()
-        years = sorted(df['year'].unique())
-        months = sorted(df['month'].unique())
         
-        # Create a dictionary to map month numbers to month names
-        month_names = {
-            1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
-            7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'
-        }
+        years = df['year'].unique()
+        selected_years = st.multiselect("Select Years", years)
         
-        fig = go.Figure(data=[go.Bar(x=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['category'], y=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['compound'], name='Bar Chart'), 
-                             go.Scatter(x=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['category'], y=avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == months[0])]['compound'], mode='lines', name='Line Chart')])
+        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        selected_months = st.multiselect("Select Months", months)
         
-        year_buttons = []
-        for y in years:
-            filtered_data = avg_compound[(avg_compound['year'] == y) & (avg_compound['month'] == months[0])]
-            year_buttons.append(dict(label=str(y), method='update', args=[{ "x": [filtered_data['category'], filtered_data['category']], "y": [filtered_data['compound'], filtered_data['compound']] }]))
+        fig = go.Figure()
         
-        month_buttons = []
-        for m in months:
-            filtered_data = avg_compound[(avg_compound['year'] == years[0]) & (avg_compound['month'] == m)]
-            month_buttons.append(dict(label=month_names[m], method='update', args=[{ "x": [filtered_data['category'], filtered_data['category']], "y": [filtered_data['compound'], filtered_data['compound']] }]))
+        month_map = {month: i+1 for i, month in enumerate(months)}
         
-        fig.update_layout(
-            updatemenus=[
-                dict(
-                    type='dropdown',
-                    buttons=year_buttons,
-                    direction='down',
-                    showactive=True,
-                    x=0.1,
-                    xanchor='left',
-                    y=1.15,
-                    yanchor='top',
-                    pad={"r": 10, "t": 10},
-                    name="Year"
-                ),
-                dict(
-                    type='dropdown',
-                    buttons=month_buttons,
-                    direction='down',
-                    showactive=True,
-                    x=0.4,
-                    xanchor='left',
-                    y=1.15,
-                    yanchor='top',
-                    pad={"r": 10, "t": 10},
-                    name="Month"
-                )
-            ]
-        )
+        for year in selected_years:
+            for month in selected_months:
+                month_num = month_map[month]
+                filtered_df = df[(df['year'] == year) & (df['month'] == month_num)]
+                avg_compound = filtered_df.groupby(['category'])['compound'].mean().reset_index()
+                fig.add_trace(go.Scatter(x=avg_compound['category'], y=avg_compound['compound'], mode='lines', name=f"{year} - {month}"))
+        
+        fig.update_layout(title="Year/Month_wise Trend", xaxis_title="Category", yaxis_title="Compound")
+        
         return fig
-    
-    st.write("Bar and Line Chart")
-    st.plotly_chart(create_bar_and_line_chart())
+    st.write("Year/Month_wise Trend")
+    st.plotly_chart(month_wise_trend())
+
+
+if year_quarter_trend:
+    # Function to create line chart
+    def quarter_wise_trend():
+        df['date'] = pd.to_datetime(df['date'])
+        df['year'] = df['date'].dt.year
+        df['quarter'] = df['date'].dt.quarter
+        
+        years = df['year'].unique()
+        selected_years = st.multiselect("Select Years", years)
+        
+        quarters = ['Q1', 'Q2', 'Q3', 'Q4']
+        selected_quarters = st.multiselect("Select Quarters", quarters)
+        
+        fig = go.Figure()
+        
+        for year in selected_years:
+            for quarter in selected_quarters:
+                quarter_num = int(quarter.split('Q')[1])
+                filtered_df = df[(df['year'] == year) & (df['quarter'] == quarter_num)]
+                avg_compound = filtered_df.groupby(['category'])['compound'].mean().reset_index()
+                fig.add_trace(go.Scatter(x=avg_compound['category'], y=avg_compound['compound'], mode='lines', name=f"{year} - {quarter}"))
+        
+        fig.update_layout(title="Year/Quarter_wise Trend", xaxis_title="Category", yaxis_title="Compound")
+        
+        return fig
+    st.write("Year/Quarter_wise Trend")
+    st.plotly_chart(quarter_wise_trend())
+
+if bar_line_chart:
+    # Function to create bar and line chart by date range
+    def create_bar_and_line_chart_by_date_range():
+        df['date'] = pd.to_datetime(df['date'])
+        min_date = df['date'].min()
+        max_date = df['date'].max()
+        
+        start_date = st.date_input("Start Date", min_value=min_date, max_value=max_date, value=min_date)
+        end_date = st.date_input("End Date", min_value=min_date, max_value=max_date, value=max_date)
+        
+        filtered_df = df[(df['date'] >= pd.to_datetime(start_date)) & (df['date'] <= pd.to_datetime(end_date))]
+        
+        avg_compound = filtered_df.groupby(['category'])['compound'].mean().reset_index()
+        
+        fig = go.Figure(data=[go.Bar(x=avg_compound['category'], y=avg_compound['compound'], name='Bar Chart'), 
+                           go.Scatter(x=avg_compound['category'], y=avg_compound['compound'], mode='lines', name='Line Chart')])
+
+        fig.update_layout(title=f"Bar and Line Chart from {start_date} to {end_date}")
+        
+        return fig
+    st.write("Bar and Line Chart by Date Range")
+    st.plotly_chart(create_bar_and_line_chart_by_date_range())
+
+
+if category_month_year_comparison:
+    # Function to create category-wise month and year comparison chart
+    def create_category_wise_month_and_year_comparison_chart():
+        df['date'] = pd.to_datetime(df['date'])
+        df['month'] = df['date'].dt.month
+        df['year'] = df['date'].dt.year
+        
+        categories = df['category'].unique()
+        selected_categories = st.multiselect("Select Categories", categories)
+        
+        years = df['year'].unique()
+        selected_years = st.multiselect("Select Years", ['All Years'] + list(years))
+        
+        month_names = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 
+                       7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
+        
+        fig = go.Figure()
+        
+        if 'All Years' in selected_years:
+            selected_years = list(years)
+        
+        for category in selected_categories:
+            for year in selected_years:
+                filtered_df = df[(df['category'] == category) & (df['year'] == year)]
+                avg_compound = filtered_df.groupby(['month'])['compound'].mean().reset_index()
+                fig.add_trace(go.Scatter(x=[month_names[m] for m in avg_compound['month']], y=avg_compound['compound'], mode='lines', name=f"{category} - {year}"))
+        
+        fig.update_layout(title="Category-wise Month Comparison", xaxis_title="Month", yaxis_title="Compound")
+        
+        return fig
+    st.write("Category-wise Month and Year Comparison")
+    st.plotly_chart(create_category_wise_month_and_year_comparison_chart())
+
+
+if category_sentiment_bar_chart:
+    # Function to create category-wise sentiment bar chart
+    def create_category_wise_sentiment_bar_chart():
+        df['date'] = pd.to_datetime(df['date'])
+        df['year'] = df['date'].dt.year
+        
+        categories = df['category'].unique()
+        years = df['year'].unique()
+        
+        selected_years = st.multiselect("Select Years", years)
+        
+        fig = go.Figure()
+        
+        for year in selected_years:
+            category_values = []
+            for category in categories:
+                filtered_df = df[(df['category'] == category) & (df['year'] == year)]
+                if not filtered_df.empty:
+                    category_values.append(filtered_df['compound'].mean().round(2))
+                else:
+                    category_values.append(0)
+            fig.add_trace(go.Bar(x=categories, y=category_values, name=year))
+        
+        fig.update_layout(title="Category-wise Sentiment Bar Chart", xaxis_title="Category", yaxis_title="Average Sentiment Score", barmode='group')
+        
+        return fig
+    st.write("Category-wise Sentiment Bar Chart")
+    st.plotly_chart(create_category_wise_sentiment_bar_chart())
+
+
+
+if sentiment_word_cloud:
+    # Function to create sentiment word cloud
+    def create_sentiment_word_cloud():
+        df['date'] = pd.to_datetime(df['date'])
+        df['year'] = df['date'].dt.year
+        
+        years = df['year'].unique()
+        selected_year = st.selectbox("Select Year", years)
+        
+        filtered_df = df[(df['year'] == selected_year)]
+        
+        positive_words = filtered_df[filtered_df['compound'] > 0.5]['content']
+        negative_words = filtered_df[filtered_df['compound'] < -0.5]['content']
+        neutral_words = filtered_df[(filtered_df['compound'] >= -0.5) & (filtered_df['compound'] <= 0.5)]['content']
+        
+        positive_wordcloud = WordCloud(width=800, height=400, max_words=100, background_color='white').generate(' '.join(positive_words.astype(str)))
+        negative_wordcloud = WordCloud(width=800, height=400, max_words=100, background_color='white').generate(' '.join(negative_words.astype(str)))
+        neutral_wordcloud = WordCloud(width=800, height=400, max_words=100, background_color='white').generate(' '.join(neutral_words.astype(str)))
+        
+        fig, ax = plt.subplots(1, 3, figsize=(20, 10))
+        ax[0].imshow(positive_wordcloud, interpolation='bilinear')
+        ax[0].set_title('Positive Sentiment')
+        ax[0].axis('off')
+        ax[1].imshow(negative_wordcloud, interpolation='bilinear')
+        ax[1].set_title('Negative Sentiment')
+        ax[1].axis('off')
+        ax[2].imshow(neutral_wordcloud, interpolation='bilinear')
+        ax[2].set_title('Neutral Sentiment')
+        ax[2].axis('off')
+        
+        st.pyplot(fig)
+    st.write("Sentiment Word Cloud")
+    create_sentiment_word_cloud()
