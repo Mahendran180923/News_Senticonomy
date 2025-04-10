@@ -74,3 +74,7 @@ No installation needed — just open the link in your browser.
   </a>
 </p>
 
+## 🚀 Deployed Streamlit App
+
+The app is live on an AWS EC2 instance. Check it out here:  
+🔗 [http://3.110.123.139:8501/](http://3.110.123.139:8501/)
