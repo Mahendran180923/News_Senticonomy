@@ -29,7 +29,7 @@ Senticonomy is a web-based application that collects and analyzes historical and
 | Python            | Core scripting and data processing     |
 | AWS S3, RDS       | Cloud-based data storage and management|
 | NLP Libraries     | NLTK          |
-| Visualization     | Plotly, Dash, Matplotlib               |
+| Visualization     | Plotly, Matplotlib               |
 | Clustering        | KMeans                    |
 | Web Framework     | Streamlit             |
 | Version Control   | GitHub                           |
