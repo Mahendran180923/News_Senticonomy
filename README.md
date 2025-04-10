@@ -54,6 +54,16 @@ Senticonomy is a web-based application that collects and analyzes historical and
 - Text normalization  
 - Sentiment score assignment using NLP models  
 
+⚙️ Future Enhancements
+ Integrate AWS Lambda for daily auto-updates
+
+ Add Web Scraping for broader news coverage
+
+ Deploy a live hosted version (e.g., on EC2 or Streamlit Cloud)
+
+ Add time-series forecasting on sentiment trends
+
+
 ## 🌐 Live Demo
 
 You can check out the live version of the Senticonomy app here:  
