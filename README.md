@@ -60,6 +60,10 @@ Senticonomy is a web-based application that collects and analyzes historical and
 - Deploy a live hosted version (e.g., on EC2 or Streamlit Cloud)
 - Add time-series forecasting on sentiment trends
 
+```markdown
+     [![Senticonomy App Screenshot](screenshot.png)](https://newssenticonomy-shashintech.streamlit.app/)
+     ```
+
 
 ## 🌐 Live Demo
 
