@@ -74,9 +74,3 @@ No installation needed — just open the link in your browser.
   </a>
 </p>
 
-
-```markdown
-     [![Senticonomy App Screenshot](screenshot.png)](https://newssenticonomy-shashintech.streamlit.app/)
-     ```
-
-
