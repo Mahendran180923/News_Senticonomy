@@ -1,6 +1,6 @@
 # 📊 Senticonomy: News Sentiment Analysis and Economic Impact Visualization
 
-Senticonomy is a web-based application that collects and analyzes historical and real-time news data to compute sentiment scores across various categories like business, politics, technology, and more. It provides meaningful visual insights on how public sentiment may influence economic trends.
+Senticonomy is a web-based application that collects and analyzes historical news data to compute sentiment scores across various categories like business, politics, technology, and more. It provides meaningful visual insights on how public sentiment may influence economic trends.
 
 ---
 
@@ -57,8 +57,6 @@ Senticonomy is a web-based application that collects and analyzes historical and
 **⚙️ Future Enhancements**
 - Integrate AWS Lambda for daily auto-updates
 - Add Web Scraping for broader news coverage
-- Deploy a live hosted version (e.g., on EC2 or Streamlit Cloud)
-- Add time-series forecasting on sentiment trends
 
 
 ## 🌐 Live Demo
