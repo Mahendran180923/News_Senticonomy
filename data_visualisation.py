@@ -28,6 +28,7 @@ sentiment_trend = st.sidebar.checkbox("Sentiment Trend by Category")
 year_month_trend = st.sidebar.checkbox("Year/Month_wise Trend")
 year_quarter_trend = st.sidebar.checkbox("Year/Quarter_wise Trend")
 bar_line_chart = st.sidebar.checkbox("Bar and Line Chart by Date Range")
+table = st.sidebar.checkbox("Table by Date Range")
 category_month_year_comparison = st.sidebar.checkbox("Category-wise Month and Year Comparison")
 category_sentiment_bar_chart = st.sidebar.checkbox("Category-wise Sentiment Bar Chart")
 sentiment_word_cloud = st.sidebar.checkbox("Sentiment Word Cloud")
@@ -153,6 +154,27 @@ if bar_line_chart:
         return fig
     st.write("Bar and Line Chart by Date Range")
     st.plotly_chart(create_bar_and_line_chart_by_date_range())
+
+
+if table:
+    # Function to table by date range
+    def create_table_by_date_range():
+        df['date'] = pd.to_datetime(df['date'])
+        df.drop(['Unnamed: 0',  'day_of_week', 'year', 'content', 'neg', 'neu', 'pos'], axis=1, inplace=True)
+        min_date = df['date'].min()
+        max_date = df['date'].max()
+        start_date = st.date_input("Start Date", min_value=min_date, max_value=max_date, value=None)
+        end_date = st.date_input("End Date", min_value=min_date, max_value=max_date, value=None)
+        filtered_df = df[(df['date'] >= pd.to_datetime(start_date)) & (df['date'] <= pd.to_datetime(end_date))]
+        return filtered_df
+
+    st.write("Table by Date Range")
+    st.table(create_table_by_date_range())
+
+
+
+
+
 
 
 if category_month_year_comparison:
