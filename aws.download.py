@@ -23,4 +23,4 @@ s3_client = boto3.client(
     )
 
 
-s3_client.download_file('senticonomy', 'raw_data.csv', 'uncleaned_data.csv')  #(Bucket name, File Name, Downloading Path)
+s3_client.download_file('senticonomy', 'raw_data.csv', 'downloaded_data.csv')  #(Bucket name, File Name, Downloading Path)
