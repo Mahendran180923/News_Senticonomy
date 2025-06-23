@@ -55,6 +55,18 @@ README.md               # This file
 
 ---
 
+## 📅 Data Range
+
+- The dataset used for this project spans from **01-02-2015 to 31-12-2024**.
+
+---
+
+## 🌟 Future Enhancements
+
+- Implement live news data updates by building an automated pipeline for real-time news ingestion and sentiment analysis.
+
+---
+
 ## 🛠️ Prerequisites
 
 - 🐍 **Python 3.8+**
