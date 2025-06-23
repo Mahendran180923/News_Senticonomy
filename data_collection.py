@@ -1,10 +1,10 @@
-import kaggle
 import zipfile
 import pandas as pd
 import numpy as np
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import pytz
+
 
 
 # Data source - Collected from Kaggle Dataset
@@ -27,7 +27,7 @@ df = pd.DataFrame(data)
 # Drop unwatned columns
 
 df.drop(['print_section', 
-         'snippet', 'print_page', 'source', 
+         'snippet', 'print_page', 
          'document_type', 'byline', 'keywords',  
          'news_desk', 'type_of_material',  '_id', 
          'word_count', 'uri', 'multimedia', 
@@ -55,7 +55,7 @@ df['pub_date'] = pd.to_datetime(df['pub_date'])
 # Create start and end date range for data filtering
 start_date = datetime(2015,1,1, tzinfo=pytz.UTC)
 
-end_date = datetime(2025,4,10, tzinfo=pytz.UTC)
+end_date = datetime(2025,6,21, tzinfo=pytz.UTC)
 
 
 # Filter the DataFrame to include only rows with pub_date within the last 10 years
