@@ -22,38 +22,38 @@ This project delivers a complete pipeline for analyzing news article sentiment a
   - Apply global filters (date, category, cluster)
 
   - **Filtered Data Table:** View a summary of articles based on your global filter selections.
-    ![Interactive Filtered Data Table](images/Screenshot%202025-06-24%20013734.png)
+    ![Interactive Filtered Data Table](Screenshot%202025-06-24%20013734.png)
 
   - **Sentiment Trends & Distribution:**
     - **Overall Sentiment Trend by Category:** Track the average sentiment score for each news category over time.
-      ![Overall Sentiment Trend by Category](images/Screenshot%202025-06-24%20013852.png)
+      ![Overall Sentiment Trend by Category](Screenshot%202025-06-24%20013852.png)
     - **Sentiment Trend (Year/Month-wise):** Compare category sentiment across selected years and months.
-      ![Sentiment Trend (Year/Month-wise)](images/Screenshot%202025-06-24%20013839.png)
+      ![Sentiment Trend (Year/Month-wise)](Screenshot%202025-06-24%20013839.png)
     - **Sentiment Trend (Year/Quarter-wise):** Compare category sentiment across selected years and quarters.
-      ![Sentiment Trend (Year/Quarter-wise)](images/Screenshot%202025-06-24%20014056.png)
+      ![Sentiment Trend (Year/Quarter-wise)](Screenshot%202025-06-24%20014056.png)
     - **Category-wise Sentiment Bar Chart:** Visualize the average sentiment score for each category across selected years.
-      ![Category-wise Sentiment Bar Chart](images/Screenshot%202025-06-24%20013805.png)
+      ![Category-wise Sentiment Bar Chart](Screenshot%202025-06-24%20013805.png)
     - **Category Sentiment (Month/Year Comparison):** Compare sentiment trends for specific categories across different months and years.
-      ![Category Sentiment (Month/Year Comparison)](images/Screenshot%202025-06-24%20014117.png)
+      ![Category Sentiment (Month/Year Comparison)](Screenshot%202025-06-24%20014117.png)
     - **Sentiment Score Distribution:** Explore the distribution of sentiment scores by category or cluster.
-      ![Sentiment Score Distribution](images/Screenshot%202025-06-24%20013959.png)
+      ![Sentiment Score Distribution](Screenshot%202025-06-24%20013959.png)
     - **News Volume Trend:** Analyze the daily or weekly volume of news articles.
-      ![Daily/Weekly News Volume Trend](images/Screenshot%202025-06-24%20013824.png)
+      ![Daily/Weekly News Volume Trend](Screenshot%202025-06-24%20013824.png)
     - **Sentiment Extremes (Min/Max):** Track the minimum (most negative) and maximum (most positive) sentiment scores over time.
 
   - **Word Clouds:**
     - **Word Cloud by Cluster:** Visualize the most frequent words in headlines for each identified cluster.
-      ![Word Cloud by Cluster](images/Screenshot%202025-06-24%20013909.png)
+      ![Word Cloud by Cluster](Screenshot%202025-06-24%20013909.png)
     - **Sentiment Word Cloud (Positive/Negative/Neutral):** Explore words associated with positive, negative, and neutral sentiments for a selected year.
-      ![Sentiment Word Cloud](images/Screenshot%202025-06-24%20014040.png)
+      ![Sentiment Word Cloud](Screenshot%202025-06-24%20014040.png)
 
   - **Category-Cluster Comparison:**
     - **Heatmap of Category vs. Cluster Counts:** A dense overview of the counts for each Category-Cluster pair.
-      ![Heatmap of Category vs. Cluster Counts](images/Screenshot%202025-06-24%20013925.png)
+      ![Heatmap of Category vs. Cluster Counts](Screenshot%202025-06-24%20013925.png)
     - Category-Cluster Comparison Tables.
 
   - **Top N Articles by Sentiment:** View the most positive or most negative articles based on current filters.
-    ![Top N Articles by Sentiment](images/Screenshot%202025-06-24%20013940.png)
+    ![Top N Articles by Sentiment](Screenshot%202025-06-24%20013940.png)
 
 ---
 
