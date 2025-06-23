@@ -3,7 +3,7 @@ import json
 import boto3
 from botocore.exceptions import ClientError
 
-# file_size = os.path.getsize('news_data.csv')
+# file_size = os.path.getsize('raw_data.csv')
 
 # if file_size < 1024:
 #     print(f"The size of the CSV file is: {file_size} bytes")
