@@ -5,7 +5,7 @@ import os
 
 
 # Read csv file and store as Dataframe
-uncleaned_data = pd.read_csv('uncleaned_data.csv')
+uncleaned_data = pd.read_csv('downloaded_data.csv')
 df = pd.DataFrame(uncleaned_data)
 
 
@@ -51,12 +51,12 @@ df.rename(columns={'lead_paragraph': 'content', 'section_name': 'category'}, inp
 
 
 # Filtering the news category
-# unique_categories, counts = np.unique(df['category'], return_counts=True)
-# for category, count in zip(unique_categories, counts):
-#     print(f"{category}: {count}")
+unique_categories, counts = np.unique(df['category'], return_counts=True)
+for category, count in zip(unique_categories, counts):
+    print(f"{category}: {count}")
 
 
-category = ["Travel", "Technology", "Science", "Health", "Food", "Education", "Sports"]
+category = ["Travel", "Technology", "Science", "Health", "Food", "Sports"]
 df = df[df['category'].isin(category)]
 
 
