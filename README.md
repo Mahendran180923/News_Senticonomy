@@ -37,7 +37,7 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
         -   **Overall Sentiment Trend by Category:** Track the average sentiment score for each news category over time.
             ![Overall Sentiment Trend by Category](Screenshot%202025-06-24%20013852.png)
         -   **Sentiment Trend (Year/Month-wise):** Compare category sentiment across selected years and months.
-            ![Sentiment Trend (Year/Month-wise)](Screenshot%2025-06-24%20013839.png)
+            ![Sentiment Trend (Year/Month-wise)](Screenshot%202025-06-24%20013839.png)
         -   **Sentiment Trend (Year/Quarter-wise):** Compare category sentiment across selected years and quarters.
             ![Sentiment Trend (Year/Quarter-wise)](Screenshot%202025-06-24%20014056.png)
         -   **Category-wise Sentiment Bar Chart:** Visualize the average sentiment score for each category across selected years.
