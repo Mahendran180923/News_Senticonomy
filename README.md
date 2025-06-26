@@ -1,4 +1,4 @@
-# 📰 News Sentiment Analysis & Clustering Dashboard
+# 📰 News Sentiment Analysis
 
 ![Overall Dashboard View with Filters](Screenshot%202025-06-24%20014019.png)
 
@@ -23,7 +23,7 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
 -   🤖 **Raw Data Collection:** Automates the collection of a large news article dataset from Kaggle.
 -   ⏳ **Date Filtering:** Filters the collected raw data to include articles from 2015 to 2024.
 -   ☁️ **AWS S3 Backup & Retrieval:** Securely backs up the filtered raw data to an S3 bucket and allows for easy retrieval for further processing.
--   🧼 **Robust Data Cleaning:** Handles missing values, extracts key information (dates, headlines), and filters articles by relevant categories and dates.
+-   🧼 **Data Cleaning:** Handles missing values, extracts key information (dates, headlines), and filters articles by relevant categories and dates.
 -   📝 **Text Preprocessing:** Utilizes NLTK for essential text operations including tokenization, lemmatization, and stopword removal to prepare content for analysis.
 -   📈 **Feature Extraction:** Transforms textual content into numerical vectors using TF-IDF, making it suitable for machine learning algorithms.
 -   🔎 **K-Means Clustering:** Groups similar news articles into distinct clusters based on their extracted content features.
@@ -31,34 +31,70 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
 -   🗃️ **PostgreSQL Integration:** Stores all processed news data (with sentiment and cluster information) and trained machine learning models for persistent, efficient access by the dashboard.
 -   🌐 **Interactive Streamlit Dashboard:** Provides a user-friendly interface with:
     -   **Global Filters:** Apply selections for date range, news category, and article cluster to refine insights.
+      
     -   **Filtered Data Table:** View a summary of articles based on your global filter selections.
+       
         ![Interactive Filtered Data Table](Screenshot%202025-06-24%20013734.png)
+        
     -   **Sentiment Trends & Distribution:**
+       
         -   **Overall Sentiment Trend by Category:** Track the average sentiment score for each news category over time.
+          
             ![Overall Sentiment Trend by Category](Screenshot%202025-06-24%20013852.png)
+ 
+            
         -   **Sentiment Trend (Year/Month-wise):** Compare category sentiment across selected years and months.
+           
             ![Sentiment Trend (Year/Month-wise)](Screenshot%202025-06-24%20013839.png)
+ 
+            
         -   **Sentiment Trend (Year/Quarter-wise):** Compare category sentiment across selected years and quarters.
+          
             ![Sentiment Trend (Year/Quarter-wise)](Screenshot%202025-06-24%20014056.png)
+ 
+            
         -   **Category-wise Sentiment Bar Chart:** Visualize the average sentiment score for each category across selected years.
+            
             ![Category-wise Sentiment Bar Chart](Screenshot%202025-06-24%20013805.png)
+ 
+            
         -   **Category Sentiment (Month/Year Comparison):** Compare sentiment trends for specific categories across different months and years.
+            
             ![Category Sentiment (Month/Year Comparison)](Screenshot%202025-06-24%20014117.png)
+ 
+            
         -   **Sentiment Score Distribution:** Explore the distribution of sentiment scores by category or cluster.
+            
             ![Sentiment Score Distribution](Screenshot%202025-06-24%20013959.png)
+ 
+            
         -   **News Volume Trend:** Analyze the daily or weekly volume of news articles.
+            
             ![Daily/Weekly News Volume Trend](Screenshot%202025-06-24%20013824.png)
+ 
+            
         -   **Sentiment Extremes (Min/Max):** Track the minimum (most negative) and maximum (most positive) sentiment scores over time.
+
+          
     -   **Word Clouds:**
         -   **Word Cloud by Cluster:** Visualize the most frequent words in headlines for each identified cluster.
+            
             ![Word Cloud by Cluster](Screenshot%202025-06-24%20013909.png)
+            
         -   **Sentiment Word Cloud (Positive/Negative/Neutral):** Explore words associated with positive, negative, and neutral sentiments for a selected year.
+            
             ![Sentiment Word Cloud](Screenshot%202025-06-24%20014040.png)
+
+            
     -   **Category-Cluster Comparison:**
+        
         -   **Heatmap of Category vs. Cluster Counts:** A dense overview of the counts for each Category-Cluster pair.
+          
             ![Heatmap of Category vs. Cluster Counts](Screenshot%202025-06-24%20013925.png)
         -   Category-Cluster Comparison Tables.
+            
     -   **Top N Articles by Sentiment:** View the most positive or most negative articles based on current filters.
+       
         ![Top N Articles by Sentiment](Screenshot%202025-06-24%20013940.png)
 
 ---
