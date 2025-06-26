@@ -4,20 +4,20 @@
 
 ## 🚀 Project Overview
 
-This project delivers a complete pipeline for analyzing news article sentiment and discovering clusters within the articles. From automated data collection and cleaning 🧹 to interactive visualization 📊, it’s your one-stop solution for news insights.
+This project delivers a complete pipeline for analyzing news article sentiment and discovering clusters within the articles. From data collection and cleaning 🧹 to interactive visualization 📊, it’s your one-stop solution for news insights.
 
 ---
 
 ## ✨ Features
 
-- 🤖 **Automated Data Collection:** Downloads and processes a large news article dataset from Kaggle.
-- 🧼 **Robust Data Cleaning:** Handles missing values, extracts dates/headlines, filters by category and date.
+- 🤖 **Data Collection:** Downloads and processes a large news article dataset from Kaggle.
+- 🧼 **Data Cleaning:** Handles missing values, extracts dates/headlines, filters by category and date.
 - 📝 **Text Preprocessing:** Uses NLTK for tokenization, lemmatization, and stopword removal.
 - 📈 **Feature Extraction:** Converts text to numerical vectors using TF-IDF for machine learning.
 - 🔎 **K-Means Clustering:** Groups similar articles into clusters based on content.
 - 😄 **VADER Sentiment Analysis:** Calculates polarity scores (negative/neutral/positive/compound).
 - 🗃️ **PostgreSQL Integration:** Stores processed data & model for persistent and efficient dashboard access.
-- ☁️ **AWS S3 Integration (Optional):** Upload/download raw data to/from an S3 bucket.
+- ☁️ **AWS S3 Integration:** Upload/download raw data to/from an S3 bucket.
 - 🌐 **Interactive Streamlit Dashboard:**
   - Apply global filters (date, category, cluster)
 
@@ -147,7 +147,7 @@ Before running the project, ensure you have the following installed:
     python data_collection.py
     ```
 
-2.  **AWS S3 (Optional):**
+2.  **AWS S3:**
     * **Upload `raw_data.csv` to S3:**
         ```bash
         python aws_upload.py
