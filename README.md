@@ -43,7 +43,7 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
         -   **Category-wise Sentiment Bar Chart:** Visualize the average sentiment score for each category across selected years.
             ![Category-wise Sentiment Bar Chart](Screenshot%202025-06-24%20013805.png)
         -   **Category Sentiment (Month/Year Comparison):** Compare sentiment trends for specific categories across different months and years.
-            ![Category Sentiment (Month/Year Comparison)](Screenshot%2025-06-24%20014117.png)
+            ![Category Sentiment (Month/Year Comparison)](Screenshot%202025-06-24%20014117.png)
         -   **Sentiment Score Distribution:** Explore the distribution of sentiment scores by category or cluster.
             ![Sentiment Score Distribution](Screenshot%202025-06-24%20013959.png)
         -   **News Volume Trend:** Analyze the daily or weekly volume of news articles.
