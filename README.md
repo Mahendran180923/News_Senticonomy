@@ -1,6 +1,6 @@
 # 📰 News Sentiment Analysis
 
-![Overall Dashboard View with Filters](Screenshot%202025-06-24%20014019.png)
+
 
 
 
@@ -37,7 +37,8 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
         ![Interactive Filtered Data Table](Screenshot%202025-06-24%20013734.png)
         
     -   **Sentiment Trends & Distribution:**
-       
+             ![Overall Dashboard View with Filters](Screenshot%202025-06-24%20014019.png)
+        
         -   **Overall Sentiment Trend by Category:** Track the average sentiment score for each news category over time.
           
             ![Overall Sentiment Trend by Category](Screenshot%202025-06-24%20013852.png)
