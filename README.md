@@ -1,6 +1,8 @@
 # 📰 News Sentiment Analysis & Clustering Dashboard
 
-![Overall Dashboard View with Filters](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20014019.png-b2ebb794-7156-4bec-94a7-374960063027)
+![Overall Dashboard View with Filters](Screenshot%202025-06-24%20014019.png)
+
+
 
 ## 🚀 Project Overview
 
@@ -33,31 +35,31 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
         ![Interactive Filtered Data Table](Screenshot%202025-06-24%20013734.png)
     -   **Sentiment Trends & Distribution:**
         -   **Overall Sentiment Trend by Category:** Track the average sentiment score for each news category over time.
-            ![Overall Sentiment Trend by Category](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013852.png-d68b97ec-5326-4cce-864d-08e732fec8ad)
+            ![Overall Sentiment Trend by Category](Screenshot%202025-06-24%20013852.png)
         -   **Sentiment Trend (Year/Month-wise):** Compare category sentiment across selected years and months.
-            ![Sentiment Trend (Year/Month-wise)](http://googleusercontent.com/run-storage/uploaded:Screenshot%2025-06-24%20013839.png-686e0a2f-a7d9-4dd8-9e2f-e38c2e7cbd33)
+            ![Sentiment Trend (Year/Month-wise)](Screenshot%2025-06-24%20013839.png)
         -   **Sentiment Trend (Year/Quarter-wise):** Compare category sentiment across selected years and quarters.
-            ![Sentiment Trend (Year/Quarter-wise)](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20014056.png-6acf7e16-d78b-478a-9efa-536bea466e69)
+            ![Sentiment Trend (Year/Quarter-wise)](Screenshot%202025-06-24%20014056.png)
         -   **Category-wise Sentiment Bar Chart:** Visualize the average sentiment score for each category across selected years.
-            ![Category-wise Sentiment Bar Chart](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013805.png-c81aa090-b866-4565-a6be-01f25eafbea8)
+            ![Category-wise Sentiment Bar Chart](Screenshot%202025-06-24%20013805.png)
         -   **Category Sentiment (Month/Year Comparison):** Compare sentiment trends for specific categories across different months and years.
-            ![Category Sentiment (Month/Year Comparison)](http://googleusercontent.com/run-storage/uploaded:Screenshot%2025-06-24%20014117.png-9c3099f8-4f36-4cc3-9a91-09a58963ecde)
+            ![Category Sentiment (Month/Year Comparison)](Screenshot%2025-06-24%20014117.png)
         -   **Sentiment Score Distribution:** Explore the distribution of sentiment scores by category or cluster.
-            ![Sentiment Score Distribution](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013959.png-b795020b-8ac6-4e21-9373-ab0632415ea8)
+            ![Sentiment Score Distribution](Screenshot%202025-06-24%20013959.png)
         -   **News Volume Trend:** Analyze the daily or weekly volume of news articles.
-            ![Daily/Weekly News Volume Trend](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013824.png-d076dda0-ab11-4237-99ab-69de4270bc6c)
+            ![Daily/Weekly News Volume Trend](Screenshot%202025-06-24%20013824.png)
         -   **Sentiment Extremes (Min/Max):** Track the minimum (most negative) and maximum (most positive) sentiment scores over time.
     -   **Word Clouds:**
         -   **Word Cloud by Cluster:** Visualize the most frequent words in headlines for each identified cluster.
-            ![Word Cloud by Cluster](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013909.png-8689ca00-9c7a-4a23-b838-d5c90dff8dc8)
+            ![Word Cloud by Cluster](Screenshot%202025-06-24%20013909.png)
         -   **Sentiment Word Cloud (Positive/Negative/Neutral):** Explore words associated with positive, negative, and neutral sentiments for a selected year.
-            ![Sentiment Word Cloud](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20014040.png-b2ebb794-7156-4bec-94a7-374960063027)
+            ![Sentiment Word Cloud](Screenshot%202025-06-24%20014040.png)
     -   **Category-Cluster Comparison:**
         -   **Heatmap of Category vs. Cluster Counts:** A dense overview of the counts for each Category-Cluster pair.
-            ![Heatmap of Category vs. Cluster Counts](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013925.png-1efe8366-8208-4aab-ba75-b41afa6c7b6a)
+            ![Heatmap of Category vs. Cluster Counts](Screenshot%202025-06-24%20013925.png)
         -   Category-Cluster Comparison Tables.
     -   **Top N Articles by Sentiment:** View the most positive or most negative articles based on current filters.
-        ![Top N Articles by Sentiment](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013940.png-527afd41-ec99-426d-8bdc-7a7cb4f9a089)
+        ![Top N Articles by Sentiment](Screenshot%202025-06-24%20013940.png)
 
 ---
 
