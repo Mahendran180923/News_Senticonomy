@@ -29,7 +29,7 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
     -   **Global Filters:** Apply selections for date range, news category, and article cluster to refine insights.
 
     -   **Filtered Data Table:** View a summary of articles based on your global filter selections.
-        ![Interactive Filtered Data Table(screentshots/Category cluster comparison table.png)]
+        ![Interactive Filtered Data Table](screentshots/Category_cluster_comparison_table.png)
 
     -   **Sentiment Trends & Distribution:**
         -   **Overall Sentiment Trend by Category:** Track the average sentiment score for each news category over time.
