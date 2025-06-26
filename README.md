@@ -30,7 +30,7 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
 -   🌐 **Interactive Streamlit Dashboard:** Provides a user-friendly interface with:
     -   **Global Filters:** Apply selections for date range, news category, and article cluster to refine insights.
     -   **Filtered Data Table:** View a summary of articles based on your global filter selections.
-        ![Interactive Filtered Data Table](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013734.png-2f34f798-1a56-4797-9a6c-34ba78183ee5)
+        ![Interactive Filtered Data Table](Screenshot%202025-06-24%20013734.png)
     -   **Sentiment Trends & Distribution:**
         -   **Overall Sentiment Trend by Category:** Track the average sentiment score for each news category over time.
             ![Overall Sentiment Trend by Category](http://googleusercontent.com/run-storage/uploaded:Screenshot%202025-06-24%20013852.png-d68b97ec-5326-4cce-864d-08e732fec8ad)
