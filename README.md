@@ -1,6 +1,4 @@
-# 📰 News Sentiment Analysis & Clustering Dashboard
-
-![Overall Dashboard View with Filters](Screenshot%202025-06-24%20014019.png)
+# 📰 News Sentiment Analysis
 
 ## 🚀 Project Overview
 
@@ -31,7 +29,7 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
     -   **Global Filters:** Apply selections for date range, news category, and article cluster to refine insights.
 
     -   **Filtered Data Table:** View a summary of articles based on your global filter selections.
-        ![Interactive Filtered Data Table](Screenshot%202025-06-24%20013734.png)
+        ![Interactive Filtered Data Table][(screentshots/Category cluster comparison table.png)](https://github.com/Mahendran180923/News_Senticonomy/blob/0208b87f3715de4030d12065a110a60e5cff9d5f/screentshots/Category%20cluster%20comparison%20table.png)
 
     -   **Sentiment Trends & Distribution:**
         -   **Overall Sentiment Trend by Category:** Track the average sentiment score for each news category over time.
