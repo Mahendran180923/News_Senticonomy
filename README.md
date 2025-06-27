@@ -46,34 +46,34 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
 ## 🖼️ Screenshots
 
 ### Sentiment Score Distribution
-![Sentiment Score Distribution](./screenshots/Sentiment Score Distribution.png)
+![Sentiment Score Distribution](./screentshots/SentimentScoreDistribution.png)
 
 ### Heatmap of Sentiment by Day and Category
-![Heatmap](./screenshots/Heatmap.png)
+![Heatmap](./screentshots/Heatmap.png)
 
 ### Daily or Weekly News Volume Trend
-![Volume Trend](./screenshots/Daily or weekly news volume trend.png)
+![Volume Trend](./screentshots/Daily or weekly news volume trend.png)
 
 ### Top N Articles by Sentiment
-![Top N Articles](./screenshots/Top N articles by sentiment.png)
+![Top N Articles](./screentshots/Top N articles by sentiment.png)
 
 ### Word Cloud by Cluster
-![Word Cloud](./screenshots/Word cloud.png)
+![Word Cloud](./screentshots/Word cloud.png)
 
 ### Sentiment Extremes Over Time
-![Sentiment Extremes Trend](./screenshots/Sentiment xtrems trend.png)
+![Sentiment Extremes Trend](./screentshots/Sentiment xtrems trend.png)
 
 ### Category-wise Sentiment Bar Chart
-![Category Sentiment Bar](./screenshots/Category wise sentiment bar chart.png)
+![Category Sentiment Bar](./screentshots/Category wise sentiment bar chart.png)
 
 ### Category Sentiment Bar and Line Chart
-![Category Bar + Line](./screenshots/Category sentiment bar and line chart.png)
+![Category Bar + Line](./screentshots/Category sentiment bar and line chart.png)
 
 ### Category Cluster Comparison Table
-![Category Cluster Table](./screenshots/Category cluster comparison table.png)
+![Category Cluster Table](./screentshots/Category cluster comparison table.png)
 
 ### Sentiment Word Cloud
-![Sentiment Word Cloud](./screenshots/Sentiment word cloud.png)
+![Sentiment Word Cloud](./screentshots/Sentiment word cloud.png)
 
 ---
 
