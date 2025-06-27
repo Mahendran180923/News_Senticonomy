@@ -52,28 +52,28 @@ This project provides an end-to-end pipeline for **News Sentiment Analysis and C
 ![Heatmap](./screentshots/Heatmap.png)
 
 ### Daily or Weekly News Volume Trend
-![Volume Trend](./screentshots/Daily or weekly news volume trend.png)
+![Volume Trend](./screentshots/Dailyorweeklynewsvolumetrend.png)
 
 ### Top N Articles by Sentiment
-![Top N Articles](./screentshots/Top N articles by sentiment.png)
+![Top N Articles](./screentshots/TopNarticlesbysentiment.png)
 
 ### Word Cloud by Cluster
-![Word Cloud](./screentshots/Word cloud.png)
+![Word Cloud](./screentshots/Wordcloud.png)
 
 ### Sentiment Extremes Over Time
-![Sentiment Extremes Trend](./screentshots/Sentiment xtrems trend.png)
+![Sentiment Extremes Trend](./screentshots/Sentimentxtremstrend.png)
 
 ### Category-wise Sentiment Bar Chart
-![Category Sentiment Bar](./screentshots/Category wise sentiment bar chart.png)
+![Category Sentiment Bar](./screentshots/Categorywisesentimentbarchart.png)
 
 ### Category Sentiment Bar and Line Chart
-![Category Bar + Line](./screentshots/Category sentiment bar and line chart.png)
+![Category Bar + Line](./screentshots/Categorysentimentbarandlinechart.png)
 
 ### Category Cluster Comparison Table
-![Category Cluster Table](./screentshots/Category cluster comparison table.png)
+![Category Cluster Table](./screentshots/Categoryclustercomparisontable.png)
 
 ### Sentiment Word Cloud
-![Sentiment Word Cloud](./screentshots/Sentiment word cloud.png)
+![Sentiment Word Cloud](./screentshots/Sentimentwordcloud.png)
 
 ---
 
