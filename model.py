@@ -16,6 +16,11 @@ import psycopg2
 from datetime import datetime
 from sqlalchemy import create_engine
 import pickle # Import the pickle module for in-memory serialization
+import json
+
+# Load secrets from secrets.json
+with open('.vscode/secrets.json') as f:
+    secrets = json.load(f)
 
 # --- NLTK Downloads (Corrected and robust check) ---
 required_nltk_data = ['punkt', 'wordnet', 'stopwords', 'vader_lexicon']
@@ -33,15 +38,6 @@ for data_name in required_nltk_data:
 TFIDF_MAX_FEATURES = 5000
 KMEANS_RANDOM_STATE = 42
 KMEANS_N_INIT = 10
-
-# PostgreSQL DB Connection Parameters
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_NAME = os.getenv("DB_NAME", "mdte16db")
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "password")
-DB_PORT = os.getenv("DB_PORT", "5432")
-
-DB_PROCESSED_DATA_TABLE_NAME = "news_data_processed"
 
 
 # --- 1. Data Loading ---
@@ -117,51 +113,51 @@ print("\nK-Means Cluster Distribution:")
 print(df['cluster'].value_counts().sort_index())
 print("-" * 50)
 
-# --- Store K-Means Model in PostgreSQL DB ---
-print("--- Storing K-Means Model in PostgreSQL DB ---")
-conn_model = None
-cur_model = None
-try:
-    # Corrected Line: Use pickle.dumps() for in-memory serialization
-    serialized_kmeans_model = pickle.dumps(kmeans)
-    model_name = f"KMeans_Clustering_Model_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+# # --- Store K-Means Model in PostgreSQL DB ---
+# print("--- Storing K-Means Model in PostgreSQL DB ---")
+# conn_model = None
+# cur_model = None
+# try:
+#     # Corrected Line: Use pickle.dumps() for in-memory serialization
+#     serialized_kmeans_model = pickle.dumps(kmeans)
+#     model_name = f"KMeans_Clustering_Model_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
-    conn_model = psycopg2.connect(
-        host=DB_HOST,
-        database=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD,
-        port=DB_PORT
-    )
-    cur_model = conn_model.cursor()
+#     conn_model = psycopg2.connect(
+#         host=DB_HOST,
+#         database=DB_NAME,
+#         user=DB_USER,
+#         password=DB_PASSWORD,
+#         port=DB_PORT
+#     )
+#     cur_model = conn_model.cursor()
 
-    cur_model.execute("""
-        CREATE TABLE IF NOT EXISTS ml_models (
-            id SERIAL PRIMARY KEY,
-            model_name VARCHAR(255) NOT NULL,
-            model_data BYTEA NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        );
-    """)
-    conn_model.commit()
+#     cur_model.execute("""
+#         CREATE TABLE IF NOT EXISTS ml_models (
+#             id SERIAL PRIMARY KEY,
+#             model_name VARCHAR(255) NOT NULL,
+#             model_data BYTEA NOT NULL,
+#             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#         );
+#     """)
+#     conn_model.commit()
 
-    cur_model.execute(
-        "INSERT INTO ml_models (model_name, model_data) VALUES (%s, %s);",
-        (model_name, serialized_kmeans_model)
-    )
-    conn_model.commit()
-    print(f"K-Means model '{model_name}' stored successfully in PostgreSQL.")
+#     cur_model.execute(
+#         "INSERT INTO ml_models (model_name, model_data) VALUES (%s, %s);",
+#         (model_name, serialized_kmeans_model)
+#     )
+#     conn_model.commit()
+#     print(f"K-Means model '{model_name}' stored successfully in PostgreSQL.")
 
-except psycopg2.Error as e:
-    print(f"Error storing K-Means model in PostgreSQL: {e}")
-    if conn_model:
-        conn_model.rollback()
-finally:
-    if cur_model:
-        cur_model.close()
-    if conn_model:
-        conn_model.close()
-    print("-" * 50)
+# except psycopg2.Error as e:
+#     print(f"Error storing K-Means model in PostgreSQL: {e}")
+#     if conn_model:
+#         conn_model.rollback()
+# finally:
+#     if cur_model:
+#         cur_model.close()
+#     if conn_model:
+#         conn_model.close()
+#     print("-" * 50)
 
 
 # --- 5. Sentiment Analysis ---
@@ -194,18 +190,15 @@ df.drop(columns=columns_to_drop_final, axis=1, inplace=True, errors='ignore')
 print("\nLast 50 rows of selected final columns:")
 print(df[['category', 'headline', 'cluster', 'neg', 'neu', 'pos', 'compound']].tail(50))
 
+df.to_csv("news_data_final.csv")
 
-# --- Push processed data to PostgreSQL DB ---
-print(f"\n--- Pushing processed data to PostgreSQL DB table '{DB_PROCESSED_DATA_TABLE_NAME}' ---")
-try:
-    engine = create_engine(f'postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
-    df.to_sql(DB_PROCESSED_DATA_TABLE_NAME, engine, if_exists='replace', index=False)
-    print(f"Processed data pushed to PostgreSQL table '{DB_PROCESSED_DATA_TABLE_NAME}' successfully.")
+file_size = os.path.getsize('news_data_final.csv')
 
-except Exception as e:
-    print(f"Error pushing data to PostgreSQL: {e}")
-finally:
-    print("-" * 50)
+if file_size < 1024:
+    print(f"The size of the CSV file is: {file_size} bytes")
+elif file_size < 1024 ** 2:
+    print(f"The size of the CSV file is: {file_size / 1024:.2f} KB")
+else:
+    print(f"The size of the CSV file is: {file_size / (1024 ** 2):.2f} MB")
 
 
-print("\nScript execution finished.")
