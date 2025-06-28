@@ -8,6 +8,11 @@ import pandas as pd
 import psycopg2 # Import for PostgreSQL connection
 from sqlalchemy import create_engine # Import for pandas.read_sql_query
 import os # To retrieve environment variables for credentials (recommended)
+import json
+
+# Load secrets from secrets.json
+with open('.vscode/secrets.json') as f:
+    secrets = json.load(f)
 
 
 # --- Streamlit Page Configuration ---
@@ -24,13 +29,13 @@ st.config.set_option('theme.textColor', '#020412')
 # --- Database Configuration Parameters ---
 # IMPORTANT: In a production environment, use environment variables or a secrets manager
 # for these credentials, DO NOT hardcode them directly in the script.
-DB_HOST = os.getenv("DB_HOST", "localhost") # Replace with your DB host
-DB_NAME = os.getenv("DB_NAME", "mdte16db") # Replace with your DB name
-DB_USER = os.getenv("DB_USER", "postgres")     # Replace with your DB username
-DB_PASSWORD = os.getenv("DB_PASSWORD", "password") # Replace with your DB password
-DB_PORT = os.getenv("DB_PORT", "5432")              # Default PostgreSQL port
+DB_HOST = os.getenv("DB_HOST", "database-1.c3eic0i08xdc.ap-south-1.rds.amazonaws.com")
+DB_NAME = os.getenv("DB_NAME", "postgres")
+DB_USER = os.getenv("DB_USER", "postgres")
+DB_PASSWORD = secrets['db_password']
+DB_PORT = os.getenv("DB_PORT", "5432")           # Default PostgreSQL port
 
-DB_PROCESSED_DATA_TABLE_NAME = "news_data_processed" # Table name where your processed data is stored
+DB_PROCESSED_DATA_TABLE_NAME = "news_data_final" # Table name where your processed data is stored
 
 
 # --- Function to load data from PostgreSQL DB ---
