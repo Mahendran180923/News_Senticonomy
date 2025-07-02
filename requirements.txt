@@ -5,3 +5,7 @@ streamlit
 plotly
 WordCloud
 psycopg2
+sqlalchemy
+os
+json
+pandas
