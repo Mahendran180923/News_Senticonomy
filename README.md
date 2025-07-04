@@ -2,7 +2,7 @@
 
 ## 🚀 Project Overview
 
-This project provides an end-to-end pipeline for **News Sentiment Analysis and Clustering**, guiding you from raw data acquisition to an interactive, insightful dashboard. The process meticulously covers:
+This project provides an end-to-end pipeline for **News Sentiment Analysis*, guiding you from raw data acquisition to an interactive, insightful dashboard. The process meticulously covers:
 
 1.  **Collecting raw news article data** from a public dataset.
 2.  **Filtering** this data to a specific date range (2015-2024).
