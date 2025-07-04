@@ -232,7 +232,7 @@ Follow these steps to run the complete news sentiment analysis and clustering pi
     streamlit run data_visualisation.py --server.port 8501 --server.enableCORS true --server.enableXsrfProtection false
     ```
     * **Accessing the Dashboard:** After running the above command, Streamlit will typically output URLs like `http://localhost:8501` and `http://network_ip:8501`. You will need to use your EC2 instance's **Public IP address** and ensure that your EC2 instance's **Security Group** has an inbound rule allowing TCP traffic on port `8501` (or your chosen port) from your IP address or `0.0.0.0/0` (for public access, but use with caution).
-    * **Example URL:** Once deployed and running, you can access your dashboard at a URL similar to: `http://13.232.180.169:8501/`
+    * **Example URL:** Once deployed and running, you can access your dashboard at a URL similar to: `http://43.204.114.172:8501/`
 
 ---
 
